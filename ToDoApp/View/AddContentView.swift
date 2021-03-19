@@ -13,6 +13,8 @@ struct AddContentView: View {
     
     @State private var name: String = ""
     @State private var priority: String = "Срочно"
+//    @State private var date: Date = Date()
+    @Binding var updateList: [String]
     
     let priorities = ["Срочно", "Может подождать"]
     var body: some View {
@@ -20,6 +22,7 @@ struct AddContentView: View {
             VStack {
                 Form {
                     TextField("Наименование", text: $name)
+//                    DatePicker("Дата", selection: $date)
                     Picker ("Приоритет", selection: $priority) {
                         ForEach(priorities, id: \.self) {
                             Text($0)
@@ -27,32 +30,32 @@ struct AddContentView: View {
                     }
                     .pickerStyle(SegmentedPickerStyle())
                     Button(action: {
-//                        print("Save a new todo item")
+                        self.updateList.append(name)
+                        self.updateList.append(priority)
+                        presentationMode.wrappedValue.dismiss()
                     }, label: {
-                        Text("Сохранить")
-                    })
+                        HStack {
+                            Spacer()
+                            Text("Сохранить")
+                            Spacer()
+                        }
+
+                    }).disabled(name.isEmpty)
                 }
                 Spacer()
             }
-            .navigationBarTitle("Новая запись", displayMode: .inline)
-            .navigationBarItems(trailing:
-                                    Button(action: {
-                                        self.presentationMode.wrappedValue.dismiss()
-                                    }) {
-//                                        Image(systemName: "xmark")
-                                    })
-            
+            .navigationBarTitle("Новая запись", displayMode: .inline)            
         }
         
 
     }
 }
 
-struct AddContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddContentView()
-    }
-}
+//struct AddContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddContentView( abdateList: .constant([]))
+//    }
+//}
 
 
 
@@ -73,3 +76,18 @@ struct AddContentView_Previews: PreviewProvider {
 //                }
 //
 //            }
+
+
+
+
+// приблуда для свайпа 
+//.gesture(
+//        DragGesture()
+//          .onEnded {
+//            if $0.translation.width < -100 {
+//              print(«left»)
+//            } else if $0.translation.width > 100 {
+//              print(«right»)
+//            }
+//        }
+//      )

@@ -10,11 +10,14 @@ import SwiftUI
 struct ContentView: View {
 
     @State private var showingAddTodoView: Bool = false
+    @State private var list = [String]()
     var body: some View {
         NavigationView {
-            List(0..<5) { item in
-                Text("Row")
-            }
+      
+                List(list, id: \.self) { item in
+                    Text(item)
+                }
+
             .navigationBarTitle(Text("Мои записи"), displayMode: .inline)
             .navigationBarItems(trailing:
                                     Button(action: {
@@ -23,7 +26,7 @@ struct ContentView: View {
                                        Image(systemName: "plus")
                                     })
             .sheet(isPresented: $showingAddTodoView) {
-                AddContentView()
+                AddContentView(updateList: $list)
                 
             }
     
@@ -32,8 +35,8 @@ struct ContentView: View {
     
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView(list: [""])
+//    }
+//}
