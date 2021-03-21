@@ -11,27 +11,34 @@ struct AddContentView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
-    @State private var name: String = ""
-    @State private var priority: String = "Срочно"
-//    @State private var date: Date = Date()
-    @Binding var updateList: [String]
+    @State private var dataContent = DataContent()
+    
+    @Binding var updateList: [DataContent]
+    
+//    func isValidate(s:String) -> Bool {
+//        if s.isEmpty {
+//           return false
+//        }else{
+//           return true
+//        }
+//    }
     
     let priorities = ["Срочно", "Может подождать"]
     var body: some View {
         NavigationView {
             VStack {
                 Form {
-                    TextField("Наименование", text: $name)
-//                    DatePicker("Дата", selection: $date)
-                    Picker ("Приоритет", selection: $priority) {
+                    TextField("Наименование", text: $dataContent.name)
+                    DatePicker("Дата", selection: $dataContent.date)
+                    Picker ("Приоритет", selection: $dataContent.priority) {
                         ForEach(priorities, id: \.self) {
                             Text($0)
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())
                     Button(action: {
-                        self.updateList.append(name)
-                        self.updateList.append(priority)
+                        self.updateList.append(dataContent)
+
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
                         HStack {
@@ -40,7 +47,8 @@ struct AddContentView: View {
                             Spacer()
                         }
 
-                    }).disabled(name.isEmpty)
+                    })
+//                    .disabled(isValidate(s: dataContent.name))
                 }
                 Spacer()
             }

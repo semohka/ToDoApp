@@ -9,14 +9,26 @@ import SwiftUI
 
 struct ContentView: View {
 
+    static let taskDateFormat: DateFormatter = {
+            let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm E, d MMM y"
+            return formatter
+        }()
+
+    
     @State private var showingAddTodoView: Bool = false
-    @State private var list = [String]()
+    @State private var list = [DataContent]()
     var body: some View {
         NavigationView {
       
-                List(list, id: \.self) { item in
-                    Text(item)
+            List(list, id: \.name) { item in
+                VStack {
+                    Text(item.name)
+                    Text(item.priority)
+                    Text("\(item.date, formatter: Self.taskDateFormat)")
                 }
+                
+            }
 
             .navigationBarTitle(Text("Мои записи"), displayMode: .inline)
             .navigationBarItems(trailing:
