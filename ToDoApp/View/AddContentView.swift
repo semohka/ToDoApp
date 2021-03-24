@@ -38,6 +38,7 @@ struct AddContentView: View {
                     .pickerStyle(SegmentedPickerStyle())
                     Button(action: {
                         self.updateList.append(dataContent)
+                        self.updateList.sort(by: { !$0.is_complited && $1.is_complited } )
 
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
@@ -93,7 +94,7 @@ struct AddContentView: View {
 //        DragGesture()
 //          .onEnded {
 //            if $0.translation.width < -100 {
-//              print(«left»)
+//              item.sort {i}
 //            } else if $0.translation.width > 100 {
 //              print(«right»)
 //            }

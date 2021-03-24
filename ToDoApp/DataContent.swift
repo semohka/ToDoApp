@@ -10,4 +10,5 @@ class DataContent: ObservableObject {
     var name: String = ""
     var priority: String = ""
     var date: Date = Date()
+    var is_complited: Bool = false
 }
