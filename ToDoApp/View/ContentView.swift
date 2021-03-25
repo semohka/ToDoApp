@@ -20,26 +20,30 @@ struct ContentView: View {
     @State private var list = [DataContent]()
     var body: some View {
         NavigationView {
-            
-            List(list, id: \.name) { item in
-           
-                VStack {
-                    Text(item.name)
-                    Text(item.priority)
-                    Text("\(item.date, formatter: Self.taskDateFormat)")
-                }
-                .foregroundColor(item.is_complited ? .secondary : .primary)
-                .gesture(
-                    DragGesture()
-                        .onEnded {
-                            if $0.translation.width > 100 {
-                                item.is_complited = true
-                                self.list.sort(by: { !$0.is_complited && $1.is_complited } )
-                            }
+            List {
+                ForEach(list, id: \.name) { item in
+                   
+                        VStack {
+                            Text(item.name)
+                            Text(item.priority)
+                            Text("\(item.date, formatter: Self.taskDateFormat)")
                         }
-                )
-                
+                        
+                        .foregroundColor(item.is_complited ? .secondary : .primary)
+                        .gesture(
+                            DragGesture()
+                                .onEnded {
+                                    if $0.translation.width > 100 {
+                                        item.is_complited = true
+                                        self.list.sort(by: { !$0.is_complited && $1.is_complited } )
+                                    }
+                                }
+                        )
+                        
+                }
+                .onDelete(perform: deleteItems)
             }
+
             
             .navigationBarTitle(Text("Мои записи"), displayMode: .inline)
             .navigationBarItems(trailing:
@@ -55,11 +59,14 @@ struct ContentView: View {
             
         }
     }
+    private func deleteItems(at indexSet: IndexSet) {
+        self.list.remove(atOffsets: indexSet)
+    }
     
 }
 
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView(list: [""])
-//    }
-//}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}

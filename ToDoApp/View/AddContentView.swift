@@ -15,14 +15,6 @@ struct AddContentView: View {
     
     @Binding var updateList: [DataContent]
     
-//    func isValidate(s:String) -> Bool {
-//        if s.isEmpty {
-//           return false
-//        }else{
-//           return true
-//        }
-//    }
-    
     let priorities = ["Срочно", "Может подождать"]
     var body: some View {
         NavigationView {
@@ -49,7 +41,6 @@ struct AddContentView: View {
                         }
 
                     })
-//                    .disabled(isValidate(s: dataContent.name))
                 }
                 Spacer()
             }
@@ -60,11 +51,11 @@ struct AddContentView: View {
     }
 }
 
-//struct AddContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AddContentView( abdateList: .constant([]))
-//    }
-//}
+struct AddContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        AddContentView(updateList: .constant([]))
+    }
+}
 
 
 
