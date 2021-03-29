@@ -9,6 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @Environment(\.managedObjectContext) var managedOdjectContext
+    @FetchRequest(fetchRequest: ToDoItem.getAllToDoItems()) var toDoItems: FetchedResults<ToDoItem>
+    
+    @State var newToDoItem = ""
+    
     static let taskDateFormat: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm E, d MMM y"
@@ -50,7 +55,9 @@ struct ContentView: View {
                                     Button(action: {
                                         self.showingAddTodoView.toggle()
                                     }) {
-                                        Image(systemName: "plus")
+                                        Image(systemName: "plus.circle.fill")
+                                            .foregroundColor(.green)
+                                            .imageScale(.large)
                                     })
             .sheet(isPresented: $showingAddTodoView) {
                 AddContentView(updateList: $list)

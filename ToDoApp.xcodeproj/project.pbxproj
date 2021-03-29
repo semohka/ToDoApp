@@ -18,6 +18,7 @@
 		0E63219425F952B90025157F /* ToDoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E63219325F952B90025157F /* ToDoAppUITests.swift */; };
 		0E6B346425FA83A800549D99 /* AddContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6B346325FA83A800549D99 /* AddContentView.swift */; };
 		0EC893B526068554006D5F77 /* DataContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC893B426068554006D5F77 /* DataContent.swift */; };
+		0EE7D9C026123DBC00576BFD /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE7D9BF26123DBC00576BFD /* ToDoItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		0E63219525F952B90025157F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E6B346325FA83A800549D99 /* AddContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentView.swift; sourceTree = "<group>"; };
 		0EC893B426068554006D5F77 /* DataContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataContent.swift; sourceTree = "<group>"; };
+		0EE7D9BF26123DBC00576BFD /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 			children = (
 				0E6B346325FA83A800549D99 /* AddContentView.swift */,
 				0E63217225F952B70025157F /* ContentView.swift */,
+				0EE7D9BF26123DBC00576BFD /* ToDoItem.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 			files = (
 				0E63216F25F952B70025157F /* AppDelegate.swift in Sources */,
 				0E63217125F952B70025157F /* SceneDelegate.swift in Sources */,
+				0EE7D9C026123DBC00576BFD /* ToDoItem.swift in Sources */,
 				0E63217325F952B70025157F /* ContentView.swift in Sources */,
 				0E6B346425FA83A800549D99 /* AddContentView.swift in Sources */,
 				0E63217625F952B70025157F /* ToDoApp.xcdatamodeld in Sources */,
