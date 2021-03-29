@@ -10,26 +10,46 @@ import SwiftUI
 struct AddContentView: View {
     
     @Environment(\.presentationMode) var presentationMode
+    @Environment(\.managedObjectContext) var managedOdjectContext
+
     
-    @State private var dataContent = DataContent()
+    @State var name: String = ""
+    @State var priority: String = ""
+    @State var date: Date = Date()
     
-    @Binding var updateList: [DataContent]
+    
+    @Binding var updateList: [ToDoItem]
     
     let priorities = ["Срочно", "Может подождать"]
     var body: some View {
         NavigationView {
             VStack {
                 Form {
-                    TextField("Наименование", text: $dataContent.name)
-                    DatePicker("Дата", selection: $dataContent.date)
-                    Picker ("Приоритет", selection: $dataContent.priority) {
+                    TextField("Наименование", text: $name)
+                    DatePicker("Дата", selection: $date)
+                    Picker ("Приоритет", selection: $priority) {
                         ForEach(priorities, id: \.self) {
                             Text($0)
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())
                     Button(action: {
-                        self.updateList.append(dataContent)
+                        let dataContent = ToDoItem(context: self.managedOdjectContext)
+                        
+                        
+                        dataContent.name = name
+                        dataContent.priority = priority
+                        dataContent.date = date
+                        
+                        do {
+                            try self.managedOdjectContext.save()
+                        }catch{
+                           print(error)
+                        }
+
+                        
+                        
+//                        self.updateList.append(dataContent)
                         self.updateList.sort(by: { !$0.is_complited && $1.is_complited } )
 
                         presentationMode.wrappedValue.dismiss()

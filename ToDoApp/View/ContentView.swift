@@ -12,7 +12,7 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) var managedOdjectContext
     @FetchRequest(fetchRequest: ToDoItem.getAllToDoItems()) var toDoItems: FetchedResults<ToDoItem>
     
-    @State var newToDoItem = ""
+//    @State var newToDoItem = ""
     
     static let taskDateFormat: DateFormatter = {
         let formatter = DateFormatter()
@@ -22,11 +22,11 @@ struct ContentView: View {
     
     
     @State private var showingAddTodoView: Bool = false
-    @State private var list = [DataContent]()
+    @State private var list = [ToDoItem]()
     var body: some View {
         NavigationView {
             List {
-                ForEach(list, id: \.name) { item in
+                ForEach(toDoItems, id: \.name) { item in
                    
                         VStack {
                             Text(item.name)
