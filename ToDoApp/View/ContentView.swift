@@ -12,7 +12,6 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) var managedOdjectContext
     @FetchRequest(fetchRequest: ToDoItem.getAllToDoItems()) var toDoItems: FetchedResults<ToDoItem>
     
-//    @State var newToDoItem = ""
     
     static let taskDateFormat: DateFormatter = {
         let formatter = DateFormatter()
@@ -22,7 +21,6 @@ struct ContentView: View {
     
     
     @State private var showingAddTodoView: Bool = false
-    @State private var list = [ToDoItem]()
     var body: some View {
         NavigationView {
             List {
@@ -40,13 +38,18 @@ struct ContentView: View {
                                 .onEnded {
                                     if $0.translation.width > 100 {
                                         item.is_complited = true
-                                        self.list.sort(by: { !$0.is_complited && $1.is_complited } )
+                                        try? self.managedOdjectContext.save()
                                     }
                                 }
                         )
                         
                 }
-                .onDelete(perform: deleteItems)
+                .onDelete { indexSet in
+                     for index in indexSet {
+                        self.managedOdjectContext.delete(toDoItems[index])
+                        try? self.managedOdjectContext.save()
+                     }
+                 }
             }
 
             
@@ -60,16 +63,12 @@ struct ContentView: View {
                                             .imageScale(.large)
                                     })
             .sheet(isPresented: $showingAddTodoView) {
-                AddContentView(updateList: $list)
+                AddContentView()
                 
             }
             
         }
     }
-    private func deleteItems(at indexSet: IndexSet) {
-        self.list.remove(atOffsets: indexSet)
-    }
-    
 }
 
 struct ContentView_Previews: PreviewProvider {

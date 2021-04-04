@@ -17,9 +17,7 @@ struct AddContentView: View {
     @State var priority: String = ""
     @State var date: Date = Date()
     
-    
-    @Binding var updateList: [ToDoItem]
-    
+        
     let priorities = ["Срочно", "Может подождать"]
     var body: some View {
         NavigationView {
@@ -47,11 +45,6 @@ struct AddContentView: View {
                            print(error)
                         }
 
-                        
-                        
-//                        self.updateList.append(dataContent)
-                        self.updateList.sort(by: { !$0.is_complited && $1.is_complited } )
-
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
                         HStack {
@@ -73,7 +66,7 @@ struct AddContentView: View {
 
 struct AddContentView_Previews: PreviewProvider {
     static var previews: some View {
-        AddContentView(updateList: .constant([]))
+        AddContentView()
     }
 }
 
