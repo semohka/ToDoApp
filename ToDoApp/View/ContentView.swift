@@ -12,25 +12,15 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) var managedOdjectContext
     @FetchRequest(fetchRequest: ToDoItem.getAllToDoItems()) var toDoItems: FetchedResults<ToDoItem>
     
-    
-    static let taskDateFormat: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm E, d MMM y"
-        return formatter
-    }()
-    
-    
     @State private var showingAddTodoView: Bool = false
     var body: some View {
         NavigationView {
             List {
                 ForEach(toDoItems, id: \.name) { item in
-                   
-                        VStack {
-                            Text(item.name)
-                            Text(item.priority)
-                            Text("\(item.date, formatter: Self.taskDateFormat)")
-                        }
+                    NavigationLink(destination: UpdateView(toDoItem: item).environment(\.managedObjectContext, managedOdjectContext)){
+                        DetailView(item: item)
+
+                    }
                         
                         .foregroundColor(item.is_complited ? .secondary : .primary)
                         .gesture(

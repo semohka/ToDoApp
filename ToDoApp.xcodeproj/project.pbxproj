@@ -19,6 +19,8 @@
 		0E6B346425FA83A800549D99 /* AddContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6B346325FA83A800549D99 /* AddContentView.swift */; };
 		0EC893B526068554006D5F77 /* DataContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC893B426068554006D5F77 /* DataContent.swift */; };
 		0EE7D9C026123DBC00576BFD /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE7D9BF26123DBC00576BFD /* ToDoItem.swift */; };
+		0EE7D9C5261A459100576BFD /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE7D9C4261A459100576BFD /* DetailView.swift */; };
+		0EE7D9CA261A49FD00576BFD /* UpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE7D9C9261A49FD00576BFD /* UpdateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		0E6B346325FA83A800549D99 /* AddContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentView.swift; sourceTree = "<group>"; };
 		0EC893B426068554006D5F77 /* DataContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataContent.swift; sourceTree = "<group>"; };
 		0EE7D9BF26123DBC00576BFD /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
+		0EE7D9C4261A459100576BFD /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		0EE7D9C9261A49FD00576BFD /* UpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +156,8 @@
 				0E6B346325FA83A800549D99 /* AddContentView.swift */,
 				0E63217225F952B70025157F /* ContentView.swift */,
 				0EE7D9BF26123DBC00576BFD /* ToDoItem.swift */,
+				0EE7D9C4261A459100576BFD /* DetailView.swift */,
+				0EE7D9C9261A49FD00576BFD /* UpdateView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -287,11 +293,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E63216F25F952B70025157F /* AppDelegate.swift in Sources */,
+				0EE7D9C5261A459100576BFD /* DetailView.swift in Sources */,
 				0E63217125F952B70025157F /* SceneDelegate.swift in Sources */,
 				0EE7D9C026123DBC00576BFD /* ToDoItem.swift in Sources */,
 				0E63217325F952B70025157F /* ContentView.swift in Sources */,
 				0E6B346425FA83A800549D99 /* AddContentView.swift in Sources */,
 				0E63217625F952B70025157F /* ToDoApp.xcdatamodeld in Sources */,
+				0EE7D9CA261A49FD00576BFD /* UpdateView.swift in Sources */,
 				0EC893B526068554006D5F77 /* DataContent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
